@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<!--幅が決まっていない場合-->
+<meta name="viewport" content="width=device-width">
+<!--幅がXXXpxと決まっている場合-->
+<!-- <meta name="viewport" content="width=XXX"> -->
+<title>demo-title</title>
+<style>
+.Input {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 20px;
+}
+.Input:hover {
+  cursor: pointer;
+}
+.Input:focus-within .Input_Icon {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+.Input_El {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.Input_Icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  border-radius: 3px;
+  border: 1px solid #000;
+}
+.Input_Icon::before {
+  content: "✔";
+  visibility: hidden;
+}
+.Input_El:checked ~ .Input_Icon::before {
+  color: green;
+  visibility: visible;
+}
+.Input_El:checked ~ .Input_Text {
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<!-- チェックされていない -->
+<label class="Input">
+  <input class="Input_El" type="checkbox">
+  <span class="Input_Icon"></span>
+  <span class="Input_Text">チェックボックスです</span>
+</label>
+
+<!-- チェックされている -->
+<label class="Input">
+  <input class="Input_El" type="checkbox" checked>
+  <span class="Input_Icon"></span>
+  <span class="Input_Text">チェックボックスです</span>
+</label>
+
+</body>
+</html>
