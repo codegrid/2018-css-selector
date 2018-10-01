@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>demo</title>
+<style>
+div, p { padding: 10px; }
+
+/* :lang()で指定 */
+.test-1 :lang(fr) { background-color: rgba(255, 0, 0, 0.2); }
+/* 属性セレクタで指定 */
+.test-2 [lang="fr"] { background-color: rgba(255, 0, 0, 0.2); }
+</style>
+</head>
+<body>
+
+<h2>:lang()擬似クラスを使用した場合</h2>
+<div class="test-1">
+  <div lang="fr">
+    C'est français
+    <p>Ceci est aussi français</p>
+  </div>
+</div>
+
+<h2>属性セレクターを使用した場合</h2>
+<div class="test-2">
+  <div lang="fr">
+    C'est français
+    <p>Ceci est aussi français</p>
+  </div>
+</div>
+
+</body>
+</html>
