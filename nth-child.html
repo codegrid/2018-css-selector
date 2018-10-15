@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>demo</title>
+
+<style>
+.test-1 :nth-child(-n+3 of li.-bold) { font-weight: bold; color: tomato; }
+.test-2 li.-bold:nth-child(-n+3) { font-weight: bold; color: tomato; }
+
+
+body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.test-1,
+.test-2 {
+  margin: 15px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="test-1">
+  <h2> :nth-child(-n+3 of li.-bold) </h2>
+  <p>`li.-bold`に合致するもののなかから、`-n+3`番目（3,2,1番目）の要素</p>
+  <ul>
+    <li class="-bold">紅玉</li>
+    <li>バナナ</li>
+    <li class="-bold">二十世紀</li>
+    <li>みかん</li>
+    <li class="-bold">つがる</li>
+    <li>ぶどう</li>
+    <li class="-bold">幸水</li>
+    <li>ラ・フランス</li>
+    <li class="-bold">陸奥</li>
+  </ul>
+</div>
+
+<div class="test-2">
+  <h2> li.-bold:nth-child(-n+3) </h2>
+  <p>`-n+3`番目（3,2,1番目）の要素の3つのli要素のうち、`.-bold`クラスを持つ要素</p>
+  <ul>
+    <li class="-bold">紅玉</li>
+    <li>バナナ</li>
+    <li class="-bold">二十世紀</li>
+    <li>みかん</li>
+    <li class="-bold">つがる</li>
+    <li>ぶどう</li>
+    <li class="-bold">幸水</li>
+    <li>ラ・フランス</li>
+    <li class="-bold">陸奥</li>
+  </ul>
+</div>
+
+</body>
+</html>
