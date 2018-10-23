@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>demo</title>
+<style>
+.focus:focus {
+  outline: 4px dashed green;
+}
+.focus-visible:focus-visible {
+  outline: 4px dashed darkorange;
+}
+</style>
+</head>
+<body>
+
+
+<h2>無指定</h2>
+<button>:focus-visible</button>
+
+<h2>:focus指定</h2>
+<button class="focus">:focus</button>
+
+<h2>:focus-visible指定</h2>
+<button class="focus-visible">:focus-visible</button>
+
+
+<script>
+const parent = document.querySelector('.parent');
+const child = document.querySelectorAll('.child');
+let status = [];
+
+parent.addEventListener('change', function(e) {
+  for (let i=0; i<child.length; i++) {
+    child[i].checked = e.target.checked;
+    status[i] = e.target.checked;
+  }
+});
+
+for (let i=0; i<child.length; i++) {
+  child[i].addEventListener('change', function(e) {
+    status[i] = e.target.checked;
+    if (isFalse(status)) {
+      parent.checked = false;
+      parent.indeterminate = false;
+    }
+    if (isTrue(status)) {
+      parent.checked = true;
+      parent.indeterminate = false;
+    }
+    if (isIndeterminate(status)) {
+      parent.checked = false;
+      parent.indeterminate = true;
+    }
+  }, false);
+}
+
+// すべてfalse
+function isFalse (status) {
+  const status_length = status.length;
+  let false_count = 0;
+  status.forEach(function(s){
+    if (s === false) {
+      false_count ++;
+    }
+  });
+  return status_length === false_count;
+}
+
+// すべてtrue
+function isTrue (status) {
+  const status_length = status.length;
+  let true_count = 0;
+  status.forEach(function(s){
+    if (s === true) {
+      true_count ++;
+    }
+  });
+  return status_length === true_count;
+}
+
+// どれかがtrue
+function isIndeterminate (status) {
+  const status_length = status.length;
+  let true_count = 0;
+  status.forEach(function(s){
+    if (s === true) {
+      true_count ++;
+    }
+  });
+  return true_count > 0 && true_count !== status_length;
+}
+</script>
+
+</body>
+</html>
